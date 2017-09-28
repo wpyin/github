@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="skin/bootstrap.css" rel="stylesheet" />
+<link href="skin/glide.css" rel="Stylesheet" />
+<link href="skin/style.css" rel="Stylesheet" />
+
+<!--[if lt IE 9]>
+
+    <script src="/2001/files/html5shiv.min.js"></script>
+
+    <script src="/2001/files/respond.min.js"></script>
+
+    <![endif]-->
+
+<script src="skin/jquery.min.js"></script>
+<script src="skin/bootstrap.js"></script>
+<script src="skin/jquery.glide.js"></script>
+<link rel="stylesheet" type="text/css" href="skin/validatebox.css" />
+<script type="text/javascript" src="skin/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="skin/easyui-lang-zh_CN.js"></script>
+</head>
+
+<body>
+<header> {dede:include filename="head.htm"/} </header>
+<div class="bannerImg" style="background-image: url(skin/2.jpg);"> <img src="skin/1.png" /> </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 mobile">
+      <div class="positionBox">
+        <div class="positionBar"> <span class="title">当前位置</span> <span>{dede:field name='position'/} </span><span class="moreMenu" id="classification" show-txt="展开更多菜单" hide-txt="关闭更多菜单"> 展开更多菜单</span> </div>
+      </div>
+      <div class="navigationBox">
+        <div class="list">
+          <ul id="firstpane">
+            {dede:type typeid='7'}
+            <li><a class='' href='[field:typelink/]'>[field:typename/]</a></li>
+            {/dede:type}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	$(document).ready(function() {
+        $('#tj').click(function(){
+			if($('#name').val()==''){alert('请输入姓名！');return false;}
+			if($('#email').val()==''){alert('请输入邮箱！');return false;}
+			if($('#qqs').val()==''){alert('请输入QQ！');return false;}
+			if($('#content').val()==''){alert('请输入内容！');return false;}
+		})
+    });
+</script>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div style="width: 100%; overflow: hidden; height: 30px;"> </div>
+      <form id="ff" action="/plus/diy.php" enctype="multipart/form-data" method="post">
+        <input type="hidden" name="action" value="post" />
+        <input type="hidden" name="diyid" value="1" />
+        <input type="hidden" name="do" value="2" />
+        <center>
+          <table cellpadding="3" cellspacing="5">
+            <tr>
+              <td align="center" colspan="2"> 感谢您光临我公司网站，如您有任何疑问请与我们留言，我们会在第一时间联系您！<br />
+                <br /></td>
+            </tr>
+            <tr>
+              <td align="right"> 姓名 </td>
+              <td align="left"><input class="easyui-validatebox" type="text" name="name" id="name" style="width: 90%;"> *</td>
+            </tr>
+            <tr>
+              <td align="right"> 电话 </td>
+              <td align="left"><input class="easyui-validatebox" type="text" name="tel" style="width: 90%;"></td>
+            </tr>
+            <tr>
+              <td align="right"> 邮箱 </td>
+              <td align="left"><input class="easyui-validatebox" type="text" name="email" id="email" style="width: 90%;"> *</td>
+            </tr>
+            <tr>
+              <td align="right"> QQ </td>
+              <td align="left"><input class="easyui-validatebox" type="text" name="qq" id="qqs" style="width: 90%;"> *</td>
+            </tr>
+            <tr>
+              <td align="right"> 反馈内容 </td>
+              <td align="left"><textarea name="content" id="content" style="width: 90%; height: 70px"></textarea> *</td>
+            </tr>
+            <input type="hidden" name="dede_fields" value="name,text;tel,text;qq,text;content,multitext" />
+			<input type="hidden" name="dede_fieldshash" value="4521626cf253808a16a014ea011c90d0" />
+            <tr>
+              <td colspan="2" align="center"><input class="btn" id="tj" type="submit" name="submit" value="确定" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="btn" type="reset" name="reset"  value="重置" /></td>
+            </tr>
+          </table>
+        </center>
+      </form>
+      <script type="text/javascript">
+
+                function saveFeedback()
+
+                {
+
+                    
+
+                    $('#ff').form('submit', {
+
+		                url: '/plus/diy.php',
+
+		                onSubmit: function() {
+
+			                var b = $(this).form('validate');
+
+                            if(b)
+
+                                $(".btn").attr({"disabled":"disabled"});
+
+                            return b;
+
+		                },
+
+		                success: function(result) {
+
+		                    $(".btn").removeAttr("disabled");
+
+			                if (result != 'SUCCESS') {
+
+			                  alert(result);
+
+			                } else {
+
+				              alert("留言成功！");
+
+				              $('#ff').form('clear');
+
+			                }
+
+		                }
+
+	                });
+
+                }
+
+                </script> 
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="skin/common.js"></script> 
+
+<!--电脑版--> 
+
+{dede:include filename="kf.htm"/}
+<footer> {dede:include filename="footer.htm"/} </footer>
+</body>
+</html>

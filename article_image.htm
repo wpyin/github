@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field.description  function='html2text(@me)'/}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="skin/bootstrap.css" rel="stylesheet" />
+<link href="skin/glide.css" rel="Stylesheet" />
+<link href="skin/detailGlide.css" rel="Stylesheet" />
+<link href="skin/lightgallery.css" rel="stylesheet" />
+<link href="skin/style.css" rel="Stylesheet" />
+
+<!--[if lt IE 9]>
+
+    <script src="/2001/files/html5shiv.min.js"></script>
+
+    <script src="/2001/files/respond.min.js"></script>
+
+    <![endif]-->
+
+<script src="skin/jquery.min.js"></script>
+<script src="skin/bootstrap.js"></script>
+<script src="skin/jquery.glide.js"></script>
+<script src="skin/touch.js"></script>
+</head>
+
+<body>
+<header> {dede:include filename="head.htm"/} </header>
+<div class="bannerImg" style="background-image: url(skin/2.jpg);"> <img src="skin/1.png" /> </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 mobile">
+      <div class="positionBox">
+        <div class="positionBar"> <span class="title">当前位置</span> <span>{dede:field name='position'/} </span><span class="moreMenu" id="classification" show-txt="展开更多菜单" hide-txt="关闭更多菜单"> 展开更多菜单</span> </div>
+      </div>
+      <div class="navigationBox">
+        <div class="list">
+          <ul id="firstpane">
+            {dede:channel row='6'  type='son' typeid='5'  }
+            <li><a class='' href='[field:typelink/]'>[field:typename/]</a></li>
+            {/dede:channel}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div style="width: 100%; overflow: hidden; height: 30px;"> </div>
+      <div class="col-sm-12 col-md-6 keyweb">
+        <div class="detailGlide">
+          <div class="slider">
+            <ul class="slider__wrapper">
+              {dede:productimagelist}
+              <li data-responsive='' data-src='[field:imgsrc/]' data-sub-html='' class='slider__item real'><a><img src='[field:imgsrc/]'></a></li>
+              {/dede:productimagelist}
+            </ul>
+          </div>
+          <div id="detailNav"> </div>
+        </div>
+        <script type="text/javascript">
+
+						var glide = $('.slider').glide({navigationImg:true,navigation:"#detailNav"});
+                        $(document).ready(function(){
+                            $('.slider__wrapper').lightGallery({selector:".real"});
+                        });
+                    </script> 
+        <script src="skin/picturefill.min.js"></script> 
+        <script src="skin/lightgallery.js"></script> 
+        <script src="skin/lg-fullscreen.js"></script> 
+        <script src="skin/lg-thumbnail.js"></script> 
+        <script src="skin/lg-video.js"></script> 
+        <script src="skin/lg-autoplay.js"></script> 
+        <script src="skin/lg-zoom.js"></script> 
+        <script src="skin/lg-hash.js"></script> 
+        <script src="skin/lg-pager.js"></script> 
+        <script src="skin/jquery.mousewheel.min.js"></script> 
+      </div>
+      <div class="col-sm-12 col-md-6 keyweb">
+        <div class="detailTitle"> {dede:field.title/}</div>
+        <div class="detailParameter"> {dede:field.description/}</div>
+        <br/>
+        <div class="detailUrl"><a target=_blank href="http://wpa.qq.com/msgrd?v=3&uin={dede:global.cfg_qqa/}&site=qq&menu=yes">在线咨询</a></div>
+      </div>
+      <div class="col-sm-12 col-md-12 keyweb">
+        <div class="detailTitleTxt"> 产品详情</div>
+        <div class="detailContent">
+          <div id="detailvalue0"> {dede:field.body/}
+            <div> <br />
+            </div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+      <div class="otherPageBox">
+        <div class="col-xs-12 col-sm-8 col-md-9 keyweb">
+          <div class='otherPage'>
+            <div class='prevBox'>{dede:prenext get='pre'/}</div>
+            <div class='nextBox'>{dede:prenext get='next'/}</div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 keyweb"> <a class="back" href="javascript:history.go(-1)">返回</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="skin/common.js"></script> 
+
+<!--电脑版--> 
+
+{dede:include filename="kf.htm"/}
+<footer> {dede:include filename="footer.htm"/} </footer>
+</body>
+</html>

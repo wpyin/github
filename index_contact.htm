@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="skin/bootstrap.css" rel="stylesheet" />
+<link href="skin/glide.css" rel="Stylesheet" />
+<link href="skin/style.css" rel="Stylesheet" />
+
+<!--[if lt IE 9]>
+
+    <script src="/files/html5shiv.min.js"></script>
+
+    <script src="/files/respond.min.js"></script>
+
+    <![endif]-->
+
+<script src="skin/jquery.min.js"></script>
+<script src="skin/bootstrap.js"></script>
+<script src="skin/jquery.glide.js"></script>
+</head>
+
+<body>
+<header> {dede:include filename="head.htm"/} </header>
+<div class="bannerImg" style="background-image: url(skin/1.jpg);"> <img src="skin/1.png" /> </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 mobile">
+      <div class="positionBox">
+        <div class="positionBar"> <span class="title">当前位置</span> <span>{dede:field name='position'/} </span><span class="moreMenu" id="classification" show-txt="展开更多菜单" hide-txt="关闭更多菜单"> 展开更多菜单</span> </div>
+      </div>
+      <div class="navigationBox">
+        <div class="list">
+          <ul id="firstpane">
+            {dede:type typeid='8'}
+            <li><a class='' href='[field:typelink/]'>[field:typename/]</a></li>
+            {/dede:type}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div style="width: 100%; overflow: hidden; height: 10px;"> </div>
+      <div class="detailContent">{dede:field.content/}</div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="skin/common.js"></script> 
+
+<!--电脑版--> 
+
+{dede:include filename="kf.htm"/}
+<footer> {dede:include filename="footer.htm"/} </footer>
+</body>
+</html>

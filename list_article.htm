@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{dede:field.title/}-{dede:global.cfg_webname/}</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description'  function='html2text(@me)'/}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="skin/bootstrap.css" rel="stylesheet" />
+<link href="skin/glide.css" rel="Stylesheet" />
+<link href="skin/style.css" rel="Stylesheet" />
+
+<!--[if lt IE 9]>
+
+    <script src="/2001/files/html5shiv.min.js"></script>
+
+    <script src="/2001/files/respond.min.js"></script>
+
+    <![endif]-->
+
+<script src="skin/jquery.min.js"></script>
+<script src="skin/bootstrap.js"></script>
+<script src="skin/jquery.glide.js"></script>
+</head>
+
+<body>
+<header> {dede:include filename="head.htm"/} </header>
+<div class="bannerImg" style="background-image: url(skin/2.jpg);"> <a href="#"> <img src="skin/1.png" /></a> </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 mobile">
+      <div class="positionBox">
+        <div class="positionBar"> <span class="title">当前位置</span> <span>{dede:field name='position'/} </span><span class="moreMenu" id="classification" show-txt="展开更多菜单" hide-txt="关闭更多菜单"> 展开更多菜单</span> </div>
+      </div>
+      <div class="navigationBox">
+        <div class="list">
+          <ul id="firstpane">
+            {dede:channel row='6'  type='son' typeid='4'  }
+            <li><a class='' href='[field:typelink/]'>[field:typename/]</a></li>
+            {/dede:channel}
+          </ul>
+        </div>
+      </div>
+      <div class="recommendNews">
+        <div class="slider">
+          <ul class="slider__wrapper">
+            {dede:arclist row='4' type='image'}
+            <li class="slider__item"><a class="newsImg" href="[field:arcurl/]"> <img src="[field:picname/]" /></a>
+              <p> <a class="newsTitle" href="[field:arcurl/]">[field:title/]</a><br />
+                [field:description function="cn_substr(@me,1600)"/]...</p>
+              <br />
+              <a href="[field:arcurl/]" class="more">READ MORE</a> </li>
+            {/dede:arclist}
+          </ul>
+        </div>
+        <script type="text/javascript">
+
+                    var glide = $('.slider').glide({arrows:false,navigationCenter:false});
+
+                    if($('.slider ul').children().length==0){$('.slider').hide()};
+
+                    </script> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="newsList">
+        <ul>
+          {dede:list pagesize ='10'}
+          <li><a class="wrapper" href="[field:arcurl/]">
+            <div class="time">
+              <div class="day">[field:pubdate function="MyDate('d',@me)"/]</div>
+              <div class="date">[field:pubdate function="MyDate('Y/m',@me)"/]</div>
+            </div>
+            <div class="tit"><span>[field:title/]</span></div>
+            <p>[field:description function="cn_substr(@me,800)"/]...</p>
+            </a></li>
+          {/dede:list}
+        </ul>
+      </div>
+      <div class="dede_pages">
+        <ul class=pagelist>
+          {dede:pagelist listitem="index,pre,next,pageno,option"listsize="1"/}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="skin/common.js"></script> 
+
+<!--电脑版--> 
+
+{dede:include filename="kf.htm"/}
+<footer> {dede:include filename="footer.htm"/} </footer>
+</body>
+</html>
